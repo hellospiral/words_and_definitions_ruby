@@ -12,3 +12,10 @@ end
 get('/words/new') do
   erb(:word_form)
 end
+
+post('/words') do
+  name = params.fetch('name')
+  Word.new(name).save()
+  @words = Word.all()
+  erb(:index)
+end

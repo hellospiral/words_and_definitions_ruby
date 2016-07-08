@@ -27,6 +27,15 @@ describe('the word form path', {:type => :feature}) do
   it('accesses the word form from the index page') do
     visit('/')
     click_link('Add a Word!')
-    expect_page(['Add a word'])
+    expect_page(['Add a word', 'Submit'])
   end
+
+  it('populates and submits the word form and renders the index page showing the word') do
+    visit('/')
+    click_link('Add a Word!')
+    fill_in('name', :with => 'Idea')
+    click_link('Submit')
+    expect_page(['Dictionary!', 'Add a Word!', 'Idea'])
+  end
+
 end
