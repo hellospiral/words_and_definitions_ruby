@@ -21,5 +21,12 @@ describe('the root path', {:type => :feature}) do
     visit('/')
     expect_page(['Dictionary!', 'Add a Word!', 'Idea'])
   end
+end
 
+describe('the word form path', {:type => :feature}) do
+  it('accesses the word form from the index page') do
+    visit('/')
+    click_link('Add a Word!')
+    expect_page(['Add a word'])
+  end
 end
