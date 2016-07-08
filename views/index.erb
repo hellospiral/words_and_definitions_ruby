@@ -1,3 +1,11 @@
 <h1>Dictionary!</h1>
 
+<% if @words.length > 0 %>
+  <ul>Your words:
+    <% @words.each() do |word| %>
+      <li> <a href=''> <%= word.name() %> </a> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <a href="/words/new">Add a Word!</a>

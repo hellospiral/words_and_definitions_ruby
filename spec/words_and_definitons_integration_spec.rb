@@ -14,4 +14,12 @@ describe('the root path', {:type => :feature}) do
     visit('/')
     expect_page(['Dictionary!', 'Add a Word!'])
   end
+
+  it('lists words if they exist') do
+    test_word = Word.new('Idea')
+    test_word.save()
+    visit('/')
+    expect_page(['Dictionary!', 'Add a Word!', 'Idea'])
+  end
+
 end
