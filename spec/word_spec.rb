@@ -10,5 +10,67 @@ describe('Word') do
     it('is empty at first') do
       expect(Word.all()).to(eq([]))
     end
+
+    it('returns an array of words after being added to') do
+      test_word = Word.new("Insane")
+      test_word.save()
+      expect(Word.all()).to(eq([test_word]))
+    end
+  end
+
+  describe('#name') do
+    it('returns the name of a word') do
+      test_word = Word.new("Insane")
+      expect(test_word.name()).to(eq("Insane"))
+    end
+  end
+
+  describe('#id') do
+    it('returns the name of a word') do
+      test_word = Word.new("Insane")
+      expect(test_word.id()).to(eq(1))
+    end
+  end
+
+  describe('#save') do
+    it('adds a word to the array of saved words') do
+      test_word = Word.new("Insane")
+      test_word.save()
+      expect(Word.all()).to(eq([test_word]))
+    end
+  end
+
+  describe('.clear') do
+    it('empties the array of saved words') do
+      test_word = Word.new("Insane")
+      test_word.save()
+      Word.clear()
+      expect(Word.all()).to(eq([]))
+    end
+  end
+
+  describe(".find") do
+    it("returns a word by its id number") do
+      test_word = Word.new("Dance")
+      test_word.save()
+      test_word2 = Word.new("Hear")
+      test_word2.save()
+      expect(Word.find(test_word.id())).to(eq(test_word))
+    end
+  end
+
+  describe('#definitions') do
+    it("initially returns an empty array of all the definitions for a word") do
+      test_word = Word.new("Mouse")
+      expect(test_word.definitions()).to(eq([]))
+    end
+  end
+
+  describe('#add_definition') do
+    it("initially adds some data to a word's definitions array") do
+      test_word = Word.new("Mouse")
+      test_word.add_definition('a little furry mammal')
+      expect(test_word.definitions()).to(eq(['a little furry mammal']))
+    end
   end
 end
