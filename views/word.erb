@@ -1,7 +1,7 @@
 <h1> <%= @word.name() %> </h1>
 
 <% if @word.definitions().length() > 0 %>
-  <ul> <%=@word.name()%>'s definitions:
+  <ul>
 
   <% @word.definitions().each() do |definition| %>
     <li> <%= definition.phrase() %> </li>
@@ -20,3 +20,7 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br>
+<br>
+
+<h3><a href='/'>See all Words</a></h3>

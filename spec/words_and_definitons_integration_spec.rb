@@ -67,6 +67,6 @@ describe('the create definition path', {:type => :feature}) do
     click_link('Meaning')
     fill_in('definition', :with => "a feeling of purpose")
     click_button('Submit')
-    expect_page(['Meaning', "Meaning's definitions:", "a feeling of purpose", 'Add a definition to Meaning'])
+    expect_page(['Meaning', "a feeling of purpose", 'Add a definition to Meaning'])
   end
 end
