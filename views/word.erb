@@ -8,3 +8,15 @@
   <% end %>
   </ul>
 <% end %>
+
+<h3>Add a definition to <%=@word.name()%></h3>
+
+<form action="/definitions" method="post">
+  <fieldset class="form-group">
+    <input id='word_id' name='word_id' type='hidden' value='<%= @word.id() %>'>
+    <label for="definition">Definition:</label>
+    <input type="text" class="form-control" name="definition" id="definition" placeholder="definition goes here">
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

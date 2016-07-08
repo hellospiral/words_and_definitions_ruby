@@ -34,7 +34,7 @@ describe('the word form path', {:type => :feature}) do
     visit('/')
     click_link('Add a Word!')
     fill_in('name', :with => 'Idea')
-    click_link('Submit')
+    click_button('Submit')
     expect_page(['Dictionary!', 'Add a Word!', 'Idea'])
   end
 end
@@ -56,5 +56,17 @@ describe('the view word path', {:type => :feature}) do
     visit('/')
     click_link('Woman')
     expect_page(['Woman', 'a female homo sapien'])
+  end
+end
+
+describe('the create definition path', {:type => :feature}) do
+  it('adds a definition to a word') do
+    test_word = Word.new('Meaning')
+    test_word.save()
+    visit('/')
+    click_link('Meaning')
+    fill_in('definition', :with => "a feeling of purpose")
+    click_button('Submit')
+    expect_page(['Meaning', "Meaning's definitions:", "a feeling of purpose", 'Add a definition to Meaning'])
   end
 end
