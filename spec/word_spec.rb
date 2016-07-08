@@ -64,6 +64,16 @@ describe('Word') do
       test_word = Word.new("Mouse")
       expect(test_word.definitions()).to(eq([]))
     end
+
+    it("returns an array of all a word's definitions") do
+      test_word = Word.new("Mouse")
+      test_definition = Definition.new("a little furry mammal")
+      test_definition2 = Definition.new("something else")
+      test_word.add_definition(test_definition)
+      test_word.add_definition(test_definition2)
+      expect(test_word.definitions()).to(eq([test_definition, test_definition2]))
+    end
+
   end
 
   describe('#add_definition') do
@@ -71,6 +81,13 @@ describe('Word') do
       test_word = Word.new("Mouse")
       test_word.add_definition('a little furry mammal')
       expect(test_word.definitions()).to(eq(['a little furry mammal']))
+    end
+
+    it("adds an instance of a Definition object to a word's definitions array") do
+      test_word = Word.new("Mouse")
+      test_definition = Definition.new("a little furry mammal")
+      test_word.add_definition(test_definition)
+      expect(test_word.definitions()).to(eq([test_definition]))
     end
   end
 end
