@@ -48,8 +48,13 @@ describe('the view word path', {:type => :feature}) do
     expect_page(['Man'])
   end
 
-  # it('populates and submits the word form and renders the index page showing the word') do
-  #   visit('')
-  #   expect_page([])
-  # end
+  it("lists a specific word's definitions if they exist") do
+    test_word = Word.new('Woman')
+    test_word.save()
+    test_definition = Definition.new('a female homo sapien')
+    test_word.add_definition(test_definition)
+    visit('/')
+    click_link('Woman')
+    expect_page(['Woman', 'a female homo sapien'])
+  end
 end

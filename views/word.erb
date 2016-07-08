@@ -1,1 +1,10 @@
 <h1> <%= @word.name() %> </h1>
+
+<% if @word.definitions().length() > 0 %>
+  <ul> <%=@word.name()%>'s definitions:
+
+  <% @word.definitions().each() do |definition| %>
+    <li> <%= definition.phrase() %> </li>
+  <% end %>
+  </ul>
+<% end %>
